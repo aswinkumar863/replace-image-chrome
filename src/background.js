@@ -11,7 +11,21 @@ function createContextMenu() {
     contexts: ["image"],
   });
 
-  chrome.contextMenus.onClicked.addListener((info, tab) => {
-    chrome.tabs.sendMessage(tab.id, { message: "getInputImage" });
+  chrome.contextMenus.create({
+    title: "Local File",
+    parentId: "replaceimage",
+    contexts:["image"],
+    onclick: function (info, tab) {
+      chrome.tabs.sendMessage(tab.id, { message: "getInputImage" });
+    }
+  });
+  
+  chrome.contextMenus.create({
+    title: "URL",
+    parentId: "replaceimage",
+    contexts:["image"],
+    onclick: function (info, tab) {
+      chrome.tabs.sendMessage(tab.id, { message: "getInputURL" });
+    }
   });
 }

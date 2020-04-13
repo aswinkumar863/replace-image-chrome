@@ -13,13 +13,16 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     case "getInputImage":
       getInputImage();
       break;
+    case "getInputURL":
+      getInputURL();
+      break;
   }
   return true;
 });
 
 // gets image using file input
 function getInputImage() {
-  var fileInput = document.createElement("input");
+  const fileInput = document.createElement("input");
   fileInput.type = "file";
   fileInput.accept = "image/png, image/jpeg";
 
@@ -39,10 +42,26 @@ function readInputImage(file) {
   };
 }
 
-// replace clicked image with base64
-function replaceImage(base64) {
-  if(!base64 || !imageEl) {
+// gets the input url from user
+function getInputURL() {
+  const URL = prompt('Enter the Image URL:');
+  if(!isValidUrl(URL)) {
+    alert('Provided URL is Invalid');
     return;
   }
-  imageEl.src = base64;
+  replaceImage(URL);
+}
+
+// replace clicked image with base64 / URL
+function replaceImage(source) {
+  if (!source || !imageEl) {
+    return;
+  }
+  imageEl.src = source;
+}
+
+// checks wheather the URL is valid
+function isValidUrl(string) {
+  try { return Boolean(new URL(string)); }
+  catch (e) { return false; }
 }
