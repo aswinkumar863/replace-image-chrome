@@ -1,9 +1,5 @@
 "use strict";
 
-chrome.runtime.onInstalled.addListener(function () {
-  createContextMenu()
-});
-
 function createContextMenu() {
   chrome.contextMenus.create({
     id: "replaceimage",
@@ -29,3 +25,4 @@ function createContextMenu() {
     }
   });
 }
+createContextMenu()

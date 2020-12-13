@@ -24,7 +24,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 function getInputImage() {
   const fileInput = document.createElement("input");
   fileInput.type = "file";
-  fileInput.accept = "image/png, image/jpeg";
+  fileInput.accept = "image/*";
 
   fileInput.addEventListener("change", function (e) {
     readInputImage(this.files[0]);
