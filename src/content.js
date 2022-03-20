@@ -10,10 +10,10 @@ document.addEventListener("contextmenu", function (event) {
 // register message event (sent from background.js)
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   switch (request.message) {
-    case "getInputImage":
+    case "replaceImageLocal":
       getInputImage();
       break;
-    case "getInputURL":
+    case "replaceImageUrl":
       getInputURL();
       break;
   }

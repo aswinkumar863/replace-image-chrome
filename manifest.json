@@ -1,22 +1,24 @@
 {
+  "manifest_version": 3,
   "name": "Replace Image Locally",
+  "version": "2.0.0",
   "description": "Replace the Image in an <img> with local file",
-  "version": "1.2",
-  "manifest_version": 2,
-  "permissions": ["tabs", "contextMenus"],
-  "background": {
-    "scripts": ["src/background.js"]
-  },
   "icons": {
     "16": "images/icon16.png",
     "32": "images/icon32.png",
     "48": "images/icon48.png",
     "128": "images/icon128.png"
   },
+  "author": "aswinkumar863",
+  "background": {
+    "service_worker": "src/background.js"
+  },
   "content_scripts": [
     {
       "matches": ["*://*/*"],
       "js": ["src/content.js"]
     }
-  ]
+  ],
+  "homepage_url": "https://github.com/aswinkumar863/replace-image-chrome",
+  "permissions": ["contextMenus"]
 }
